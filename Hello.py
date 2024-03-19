@@ -3,11 +3,14 @@
 # Description: Replies to "Hello"
 # Author: Vahueyko
 # Commands:
-# For what 😍
+#  greeton
+#  greetoff
 # ---------------------------------------------------------------------------------
 
 from telethon import events
 from .. import loader, utils
+
+valuegreet = False  # Устанавливаем значение переменной в начале
 
 @loader.tds
 class GreetingMod(loader.Module):
@@ -23,12 +26,25 @@ class GreetingMod(loader.Module):
         else:
             await utils.answer(message, "Привет!")
 
+    async def greetoncmd(self, message):
+        """Используй .greeton, чтобы включить приветствие"""
+        global valuegreet
+        valuegreet = True
+        await utils.answer(message, "Приветствие включено!")
+
+    async def greetoffcmd(self, message):
+        """Используй .greetoff, чтобы выключить приветствие"""
+        global valuegreet
+        valuegreet = False
+        await utils.answer(message, "Приветствие выключено!")
+
     async def client_ready(self, client, db):
         await client.send_message("me", "Я запущен!")
 
     @loader.unrestricted
     @loader.ratelimit
     async def watcher(self, message):
+        global valuegreet  # Используем глобальную переменную
         sender = await message.get_sender()
-        if sender and "привет" in message.text.lower():
+        if valuegreet and sender and "привет" in message.text.lower():  # Проверяем значение переменной
             await message.reply("Привет, {}!".format(sender.first_name))

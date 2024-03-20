@@ -12,7 +12,8 @@ from .. import loader, utils
 
 class GreetingMod(loader.Module):
     """Приветствует пользователя"""
-strings = {"name": Приветсвие}
+    
+strings = {"name": "autogreet"}
 
     def __init__(self):
         self.greet_settings = {}  # Привязка к чату

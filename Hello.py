@@ -46,5 +46,5 @@ class GreetingMod(loader.Module):
     async def watcher(self, message):
         global valuegreet  # Используем глобальную переменную
         sender = await message.get_sender()
-        if valuegreet and sender and "привет" in message.text.lower():  # Проверяем значение переменной
+        if valuegreet and sender and any(word in message.text.lower() for word in ["привет", "здаров", "ку"]):  # Проверяем значение переменной и текст сообщения
             await message.reply("Привет, {}!".format(sender.first_name))

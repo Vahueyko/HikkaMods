@@ -11,8 +11,8 @@ from telethon import events
 from .. import loader, utils
 
 class GreetingMod(loader.Module):
-    strings = {"name": Приветсвие}
     """Приветствует пользователя"""
+strings = {"name": Приветсвие}
 
     def __init__(self):
         self.greet_settings = {}  # Привязка к чату

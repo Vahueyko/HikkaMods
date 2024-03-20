@@ -10,8 +10,8 @@
 from telethon import events
 from .. import loader, utils
 
-strings = {"name": greetmod}
 class GreetingMod(loader.Module):
+    strings = {"name": Приветсвие}
     """Приветствует пользователя"""
 
     def __init__(self):

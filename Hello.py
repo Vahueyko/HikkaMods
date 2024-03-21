@@ -13,7 +13,7 @@ from .. import loader, utils
 class GreetingMod(loader.Module):
     """Приветствует пользователя"""
     
-strings = {"name": "autogreet"}
+    strings = {"name": "GreetMod"}
 
     def __init__(self):
         self.greet_settings = {}  # Привязка к чату
@@ -31,8 +31,11 @@ strings = {"name": "autogreet"}
     async def greetoffcmd(self, message):
         """Используй .greetoff, чтобы выключить приветствие"""
         chat_id = message.chat_id
-        self.greet_settings[chat_id] = False
-        await utils.answer(message, "Приветствие выключено в этом чате!")
+        if chat_id in self.greet_settings:
+            del self.greet_settings[chat_id]
+            await utils.answer(message, "Приветствие выключено в этом чате!")
+        else:
+            await utils.answer(message, "Приветствие уже выключено в этом чате!")
 
     async def watcher(self, message):
         sender = await message.get_sender()

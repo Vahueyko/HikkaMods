@@ -4,7 +4,7 @@ from telethon import events
 from .. import loader, utils
 
 class MyBioMod(loader.Module):
-    """Приветствует пользователя"""
+    """Отправляет пользователю вашу биографию, которую вы сами напишете(.cfg)"""
     
     strings = {"name": "MyBio"}
         

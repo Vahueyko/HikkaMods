@@ -1,11 +1,4 @@
-# ---------------------------------------------------------------------------------
-# Name: Greetings
-# Description: Replies to "Hello"
-# Author: Vahueyko
-# Commands:
-#  greeton
-#  greetoff
-# ---------------------------------------------------------------------------------
+# моя мать раняла меня в детстве
 
 from telethon import events
 from .. import loader, utils
@@ -38,9 +31,6 @@ class GreetingMod(loader.Module):
             await utils.answer(message, "Приветствие уже выключено в этом чате!")
 
     async def watcher(self, message):
-        sender = await message.get_sender()
-        if not sender:
-            return
         chat_id = message.chat_id
         if self.greet_settings.get(chat_id, False) and sender and any(word in message.text.lower() for word in ["привет", "здаров", "ку", "пр"]):
             await message.reply("Привет, {}!".format(sender.first_name))

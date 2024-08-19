@@ -31,13 +31,13 @@ class MyBioMod(loader.Module):
             ),
             loader.ConfigValue(
                 "banner_url1",
-                "https://i.yapx.cc/XQUzA.png",
+                "https://i.yapx.cc/X3i5H.png",
                 lambda: self.strings("_cfg_banner"),
                 validator=loader.validators.Link(),
             ),
             loader.ConfigValue(
                 "banner_url2",
-                "https://i.yapx.cc/XQUzA.png",
+                "https://i.yapx.cc/X3i5H.png",
                 lambda: self.strings("_cfg_banner"),
                 validator=loader.validators.Link(),
             ),

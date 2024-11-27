@@ -1,19 +1,10 @@
-# урааа ура я сделал что-то полезное
-# если кто-то будет читать этот код из-за чекера, я вам сочувствую
-# если вы пользуетесь говно чекером
-# то вы еблан тупой автоматически(!)
-#
+# meta developer: @VahueykoMod
 # /*
 # * +-----------------------------------------+
 # * |
 # * |              V A H U E Y K O
 # * |
 # * |              © 2024 Vahueyko
-# * |
-# * |       Все права защищены.
-# * |       Несанкционированное копирование
-# * |       данного кода запрещено без
-# * |       письменного разрешения.
 # * |
 # * +-----------------------------------------+
 # */
@@ -34,11 +25,10 @@ class FileManagerMod(loader.Module):
         "download_success": "Файл скачан: {}",
         "file_not_found": "Такого файла в директории нет",
         "no_filename": "Ты не указал имя файла",
-        "downloading": "Скачиваю файл...",
         "no_path": "Укажи путь для сохранения файлов!",
         "path_set": "Путь для файлов установлен: {}",
         "file_deleted": "Файл {} успешно удалён! ",
-        "file_delete_error": "Упс! Не удалось удалить файл: {} 😬",
+        "file_delete_error": "Не удалось удалить файл: {} ",
     }
 
     async def client_ready(self, client, db):
@@ -65,8 +55,6 @@ class FileManagerMod(loader.Module):
         if not reply or not reply.file:
             return await utils.answer(message, self.strings["no_file"])
 
-        await utils.answer(message, self.strings["uploading"])
-
         file = await reply.download_media(bytes)
         filename = reply.file.name
         file_path = os.path.join(self._path, filename)
@@ -82,8 +70,6 @@ class FileManagerMod(loader.Module):
         args = utils.get_args_raw(message)
         if not args:
             return await utils.answer(message, self.strings["no_filename"])
-
-        await utils.answer(message, self.strings["downloading"])
 
         file_path = os.path.join(self._path, args)
         if not os.path.exists(file_path):
@@ -119,7 +105,7 @@ class FileManagerMod(loader.Module):
         """Показать список файлов в текущей директории."""
         files = os.listdir(self._path)
         file_list = "\n".join(files)
-        await utils.answer(message, f"Файлы в {self._path}:\n{file_list}")
+        await utils.answer(message, f"Файлы в {self._path}: <blockquote> {file_list} </blockquote>")
 
     @loader.owner
     async def rmfcmd(self, message):

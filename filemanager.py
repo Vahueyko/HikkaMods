@@ -20,7 +20,6 @@ class FileManagerMod(loader.Module):
     strings = {
         "name": "File Manager",
         "no_file": "Ответь на файл",
-        "uploading": "Загружаю файл, погоди маленько...",
         "upload_success": "Файл загружен: {}",
         "download_success": "Файл скачан: {}",
         "file_not_found": "Такого файла в директории нет",

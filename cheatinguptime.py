@@ -6,57 +6,57 @@ from .. import loader, utils
 
 @loader.tds
 class CheatingUptime(loader.Module):
-    """unfair uptime"""
+    """накручивает аптайм"""
     strings = {"name": "CheatingUptime"}
 
     async def addumcmd(self, message: Message):
-        """.addum <minutes>"""
+        """.addum <минуты>"""
         args = utils.get_args_raw(message)
         if not args:
-            await utils.answer(message, "no args")        
+            await utils.answer(message, "Недостаточно аргументов")        
         try:
             args = float(args)
         except (ValueError, TypeError):
-            await utils.answer(message, "numbers pls")
+            await utils.answer(message, "Толко числа")
         
         utils.init_ts -= args * 60
-        await utils.answer(message, "Ready")
+        await utils.answer(message, "Готово")
         
     async def adduhcmd(self, message: Message):
-        """.adduh <hours>"""
+        """.adduh <часы>"""
         args = utils.get_args_raw(message)
         if not args:
-            await utils.answer(message, "no args")        
+            await utils.answer(message, "Недостаточно аргументов")        
         try:
             args = float(args)
         except (ValueError, TypeError):
-            await utils.answer(message, "numbers pls")
+            await utils.answer(message, "Только числа")
         
         utils.init_ts -= args * 60 * 60
-        await utils.answer(message, "Ready")
+        await utils.answer(message, "готово")
         
     async def delumcmd(self, message: Message):
-        """.delum <minutes>"""
+        """.delum <минуты>"""
         args = utils.get_args_raw(message)
         if not args:
-            await utils.answer(message, "no args ю")        
+            await utils.answer(message, "Недостаточно аргументов")        
         try:
             args = float(args)
         except (ValueError, TypeError):
-            await utils.answer(message, "numbers pls")
+            await utils.answer(message, "Только числа")
         
         utils.init_ts += args * 60
-        await utils.answer(message, "Ready")
+        await utils.answer(message, "готово")
         
     async def deluhcmd(self, message: Message):
-        """.deluh <hours>"""
+        """.deluh <часы>"""
         args = utils.get_args_raw(message)
         if not args:
-            await utils.answer(message, "no args")        
+            await utils.answer(message, "Недостаточно аргументов")        
         try:
             args = float(args)
         except (ValueError, TypeError):
-            await utils.answer(message, "numbers pls")
+            await utils.answer(message, "Только числа")
         
         utils.init_ts += args * 60 * 60
-        await utils.answer(message, "Ready")
+        await utils.answer(message, "Готово")
